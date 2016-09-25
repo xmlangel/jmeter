@@ -1,0 +1,35 @@
+docker-jmeter
+=============
+
+Ubuntu 14.04, Oracle JDK 8 and Tomcat 8 based docker container.
+
+# Description
+You should run this container on the background and mount the volume with your web app inside.
+
+Includes:
+
+ - Oracle JDK 1.8.120
+ - Jmeter 3.0
+ - Git, wget, curl, build-essential
+ 
+## Volumes
+Exports a volume on `/opt/jmeter/testcase`.
+You can mount the volume on run to a local directory containing your war file or exploded war directory.
+If you need the management app, remember to have a copy on your hosts volume mount point.
+
+# How to run the container
+## Using docker
+You need docker v1.3+ installed. To get the container up and running, run:
+ 
+```
+sudo docker run -d -v /opt/jmeter/testcase:/opt/jmeter/testcase whatap/jmeter
+docker run --rm -v /Users/Kwangmyung/kmdata/working/docker/apm/git/whatap-jmeter/testcase:/opt/jmeter/testcase --name jmeter whatap/jmeter ./jmeter -n -t ../testcase/First.bshrc
+```
+Remember to change `/opt/tomcat/webapps` to the directory where your app is stored.
+
+## Using docker compose
+If you have `docker-compose` installed, you can just launch:
+
+```
+sudo docker-compose up
+```
