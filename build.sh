@@ -1,2 +1,2 @@
 #!/bin/sh
-docker build --rm -t --name jmeter jmeter:2.13 .
+docker build --rm -t xmlangel/jmeter:2.13 .
